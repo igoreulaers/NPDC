@@ -11,6 +11,7 @@ lab_json = fromJSON("https://v2-api.npolar.no/biology/fielddata/_all_/ecotox/?pa
 # Extract database from JSON ----------------------------------------------
 fieldwork_df = fieldwork_json$items$data
 field_df_flat = flatten(fieldwork_df, recursive = TRUE)
+lab_df = lab_json$items$data
 lab_df_flat = flatten(lab_df, recursive = TRUE)
 
 lab_df_flat <- lab_df_flat %>% rename(fieldNumberLab = fieldNumber)
@@ -23,12 +24,13 @@ lab_df_flat <- lab_df_flat %>% rename(dynamicProperties.responsibleLab = dynamic
 
 fieldLab_df <- merge(field_df_flat, lab_df_flat, by = "eventID")
 
-# Database query ----------------------------------------------------------
+# Database properties ----------------------------------------------------------
 str(fieldLab_df)
 
 unique(fieldLab_df$dynamicProperties.measurementCategory)
 unique(fieldLab_df$dynamicProperties.matrixLab )
 
+# Database query ----------------------------------------------------------
 query <- fieldLab_df[fieldLab_df$scientificName == "Larus hyperboreus" & fieldLab_df$dynamicProperties.matrixLab == "egg",]
 query <- query[complete.cases(query[ , "eventID"]), ]
 
