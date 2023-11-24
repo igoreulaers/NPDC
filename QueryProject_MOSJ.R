@@ -18,8 +18,7 @@ lab_df_flat <- lab_df_flat %>% rename(dynamicProperties.matrixLab = dynamicPrope
 lab_df_flat <- lab_df_flat %>% rename(dynamicProperties.responsibleLab = dynamicProperties.responsible)
 fieldLab_df <- merge(field_df_flat, lab_df_flat, by = "eventID")
 
-
-# All MOSJ data - simple format -------------------------------------------
+# Simple format -----------------------------------------------------------
 MOSJ <- fieldLab_df[fieldLab_df$dynamicProperties.projectName == "MOSJ",]
 MOSJ <- MOSJ[complete.cases(MOSJ[ , "eventID"]), ]
 
@@ -38,7 +37,7 @@ MOSJ_long_simple <- MOSJ %>% select(8, 13,
 
 write.xlsx(MOSJ_long_simple, file = "MOSJ - All data - simple.xlsx")
 
-# All MOSJ data - extended field format -----------------------------------------
+# Extended field format ---------------------------------------------------
 MOSJ <- fieldLab_df[fieldLab_df$dynamicProperties.projectName == "MOSJ",]
 MOSJ <- MOSJ[complete.cases(MOSJ[ , "eventID"]), ]
 
@@ -63,7 +62,7 @@ MOSJ_long_extF <- MOSJ %>% select(8, 13,
 
 write.xlsx(MOSJ_long_extF, file = "MOSJ - All data - extended field.xlsx")
 
-# All MOSJ data - extended lab format -------------------------------------
+# Extended lab format -----------------------------------------------------
 MOSJ <- fieldLab_df[fieldLab_df$dynamicProperties.projectName == "MOSJ",]
 MOSJ <- MOSJ[complete.cases(MOSJ[ , "eventID"]), ]
 
@@ -88,7 +87,7 @@ MOSJ_long_extL <- MOSJ %>% select(8, 13,
 
 write.xlsx(MOSJ_long_extL, file = "MOSJ - All data - extended lab.xlsx")
 
-# All MOSJ data - extended field and lab format ---------------------------
+# Extended field and lab format -------------------------------------------
 MOSJ <- fieldLab_df[fieldLab_df$dynamicProperties.projectName == "MOSJ",]
 MOSJ <- MOSJ[complete.cases(MOSJ[ , "eventID"]), ]
 
@@ -118,9 +117,3 @@ MOSJ_long_extFL <- MOSJ %>% select(8, 13,
                                   53, 61, 60) %>% rename_with(~ newCOLname_extFL, all_of(oldCOLname_extFL))
 
 write.xlsx(MOSJ_long_extFL, file = "MOSJ - All data - extended field and lab.xlsx")
-
-
-
-
-
-

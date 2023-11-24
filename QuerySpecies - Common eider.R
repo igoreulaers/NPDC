@@ -19,8 +19,8 @@ lab_df_flat <- lab_df_flat %>% rename(dynamicProperties.responsibleLab = dynamic
 fieldLab_df <- merge(field_df_flat, lab_df_flat, by = "eventID")
 
 # Simple format -----------------------------------------------------------
-COPOL <- fieldLab_df[fieldLab_df$dynamicProperties.projectName == "COPOL",]
-COPOL <- COPOL[complete.cases(COPOL[ , "eventID"]), ]
+SomMol <- fieldLab_df[fieldLab_df$scientificName == "Somateria mollissima",]
+SomMol <- SomMol[complete.cases(SomMol[ , "eventID"]), ]
 
 oldCOLname_simple <- c("fieldNumber", "scientificName",
                        "eventDate", "locality",
@@ -30,16 +30,17 @@ newCOLname_simple <- c("ID.field", "species",
                        "date_field", "locality",
                        "matrix", "unit", "EOM.%",
                        "group", "compound", "concentration")
-COPOL_long_simple <- COPOL %>% select(8, 13,
-                                    6, 10,
-                                    19, 46, 54,
-                                    56, 45, 47) %>% rename_with(~ newCOLname_simple, all_of(oldCOLname_simple))
+SomMol_long_simple <- SomMol %>% select(8, 13,
+                                        6, 10,
+                                        19, 46, 54,
+                                        56, 45, 47) %>% rename_with(~ newCOLname_simple, all_of(oldCOLname_simple))
 
-write.xlsx(COPOL_long_simple, file = "COPOL - All data - simple.xlsx")
+write.xlsx(SomMol_long_simple, file = "SomMol - All data - simple.xlsx")
+
 
 # Extended field format ---------------------------------------------------
-COPOL <- fieldLab_df[fieldLab_df$dynamicProperties.projectName == "COPOL",]
-COPOL <- COPOL[complete.cases(COPOL[ , "eventID"]), ]
+SomMol <- fieldLab_df[fieldLab_df$scientificName == "Somateria mollissima",]
+SomMol <- SomMol[complete.cases(SomMol[ , "eventID"]), ]
 
 oldCOLname_extF <- c("fieldNumber", "scientificName",
                      "eventDate", "locality", "decimalLatitude", "decimalLongitude",
@@ -53,18 +54,18 @@ newCOLname_extF <- c("ID.field", "species",
                      "rightsholder_field", "responsible_field", "protocol_field",
                      "matrix", "unit", "EOM.%",
                      "group", "compound", "concentration")
-COPOL_long_extF <- COPOL %>% select(8, 13,
-                                  6, 10, 4, 5, 
-                                  15, 18, 17, 27,
-                                  12, 21, 16,
-                                  19, 46, 54,
-                                  56, 45, 47) %>% rename_with(~ newCOLname_extF, all_of(oldCOLname_extF))
+SomMol_long_extF <- SomMol %>% select(8, 13,
+                                      6, 10, 4, 5, 
+                                      15, 18, 17, 27,
+                                      12, 21, 16,
+                                      19, 46, 54,
+                                      56, 45, 47) %>% rename_with(~ newCOLname_extF, all_of(oldCOLname_extF))
 
-write.xlsx(COPOL_long_extF, file = "COPOL - All data - extended field.xlsx")
+write.xlsx(SomMol_long_extF, file = "SomMol - All data - extended field.xlsx")
 
 # Extended lab format -----------------------------------------------------
-COPOL <- fieldLab_df[fieldLab_df$dynamicProperties.projectName == "COPOL",]
-COPOL <- COPOL[complete.cases(COPOL[ , "eventID"]), ]
+SomMol <- fieldLab_df[fieldLab_df$scientificName == "Somateria mollissima",]
+SomMol <- SomMol[complete.cases(SomMol[ , "eventID"]), ]
 
 oldCOLname_extL <- c("fieldNumber", "scientificName",
                      "eventDate", "locality",
@@ -78,18 +79,19 @@ newCOLname_extL <- c("ID.field", "species",
                      "group", "compound", "concentration",
                      "rightsholder_lab", "lab", "responsible_lab", "date_lab",
                      "LOD", "LOQ", "recovery")
-COPOL_long_extL <- COPOL %>% select(8, 13,
-                                  6, 10,
-                                  19, 46, 54,
-                                  56, 45, 47,
-                                  49, 41, 58, 42,
-                                  53, 61, 60) %>% rename_with(~ newCOLname_extL, all_of(oldCOLname_extL))
+SomMol_long_extL <- SomMol %>% select(8, 13,
+                                      6, 10,
+                                      19, 46, 54,
+                                      56, 45, 47,
+                                      49, 41, 58, 42,
+                                      53, 61, 60) %>% rename_with(~ newCOLname_extL, all_of(oldCOLname_extL))
 
-write.xlsx(COPOL_long_extL, file = "COPOL - All data - extended lab.xlsx")
+write.xlsx(SomMol_long_extL, file = "SomMol - All data - extended lab.xlsx")
+
 
 # Extended field and lab format -------------------------------------------
-COPOL <- fieldLab_df[fieldLab_df$dynamicProperties.projectName == "COPOL",]
-COPOL <- COPOL[complete.cases(COPOL[ , "eventID"]), ]
+SomMol <- fieldLab_df[fieldLab_df$scientificName == "Somateria mollissima",]
+SomMol <- SomMol[complete.cases(SomMol[ , "eventID"]), ]
 
 oldCOLname_extFL <- c("fieldNumber", "scientificName",
                       "eventDate", "locality", "decimalLatitude", "decimalLongitude",
@@ -107,13 +109,13 @@ newCOLname_extFL <- c("ID.field", "species",
                       "group", "compound", "concentration",
                       "rightsholder_lab", "lab", "responsible_lab", "date_lab",
                       "LOD", "LOQ", "recovery")
-COPOL_long_extFL <- COPOL %>% select(8, 13,
-                                   6, 10, 4, 5, 
-                                   15, 18, 17, 27,
-                                   12, 21, 16,
-                                   19, 46, 54,
-                                   56, 45, 47,
-                                   49, 41, 58, 42,
-                                   53, 61, 60) %>% rename_with(~ newCOLname_extFL, all_of(oldCOLname_extFL))
+SomMol_long_extFL <- SomMol %>% select(8, 13,
+                                       6, 10, 4, 5, 
+                                       15, 18, 17, 27,
+                                       12, 21, 16,
+                                       19, 46, 54,
+                                       56, 45, 47,
+                                       49, 41, 58, 42,
+                                       53, 61, 60) %>% rename_with(~ newCOLname_extFL, all_of(oldCOLname_extFL))
 
-write.xlsx(COPOL_long_extFL, file = "COPOL - All data - extended field and lab.xlsx")
+write.xlsx(SomMol_long_extFL, file = "SomMol - All data - extended field and lab.xlsx")
