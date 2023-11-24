@@ -11,3 +11,9 @@ Each query offers four different output formats:
 Queries are available for the following projects:
 * MOSJ
 * COPOL
+
+Queries are available for the following species:
+* polar bear
+* glaucous gull
+* black-legged kittiwake
+* common eider
