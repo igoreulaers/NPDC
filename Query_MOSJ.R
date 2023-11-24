@@ -18,15 +18,6 @@ lab_df_flat <- lab_df_flat %>% rename(dynamicProperties.matrixLab = dynamicPrope
 lab_df_flat <- lab_df_flat %>% rename(dynamicProperties.responsibleLab = dynamicProperties.responsible)
 fieldLab_df <- merge(field_df_flat, lab_df_flat, by = "eventID")
 
-# Database properties ----------------------------------------------------------
-str(fieldLab_df)
-names(fieldLab_df)
-
-unique(fieldLab_df$dynamicProperties.projectName)
-unique(fieldLab_df$dynamicProperties.measurementCategory)
-unique(fieldLab_df$dynamicProperties.matrixLab )
-
-unique(fieldLab_df$measurementType)
 
 # All MOSJ data - simple format -------------------------------------------
 MOSJ <- fieldLab_df[fieldLab_df$dynamicProperties.projectName == "MOSJ",]
