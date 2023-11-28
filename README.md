@@ -17,3 +17,4 @@ Queries are available for the following species:
 * glaucous gull
 * black-legged kittiwake
 * common eider
+* ivory gull
