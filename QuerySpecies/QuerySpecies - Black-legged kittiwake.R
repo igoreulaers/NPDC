@@ -19,8 +19,8 @@ lab_df_flat <- lab_df_flat %>% rename(dynamicProperties.responsibleLab = dynamic
 fieldLab_df <- merge(field_df_flat, lab_df_flat, by = "eventID")
 
 # Simple format -----------------------------------------------------------
-RisTri <- fieldLab_df[fieldLab_df$scientificName == "Rissa tridactyla",]
-RisTri <- RisTri[complete.cases(RisTri[ , "eventID"]), ]
+QUERY <- fieldLab_df[fieldLab_df$scientificName == "Uria lomvia",]
+QUERY <- QUERY[complete.cases(QUERY[ , "eventID"]), ]
 
 oldCOLname_simple <- c("fieldNumber", "scientificName",
                        "eventDate", "locality",
@@ -30,17 +30,17 @@ newCOLname_simple <- c("ID.field", "species",
                        "date_field", "locality",
                        "matrix", "unit", "EOM.%",
                        "group", "compound", "concentration")
-RisTri_long_simple <- RisTri %>% select(8, 13,
+QUERY_long_extFL <- QUERY %>% select(8, 13,
                                         6, 10,
                                         19, 46, 54,
                                         56, 45, 47) %>% rename_with(~ newCOLname_simple, all_of(oldCOLname_simple))
 
-write.xlsx(RisTri_long_simple, file = "RisTri - All data - simple.xlsx")
+write.xlsx(QUERY_long_extFL, file = "Black-legged kittiwake - All data - simple.xlsx")
 
 
 # Extended field format ---------------------------------------------------
-RisTri <- fieldLab_df[fieldLab_df$scientificName == "Rissa tridactyla",]
-RisTri <- RisTri[complete.cases(RisTri[ , "eventID"]), ]
+QUERY <- fieldLab_df[fieldLab_df$scientificName == "Uria lomvia",]
+QUERY <- QUERY[complete.cases(QUERY[ , "eventID"]), ]
 
 oldCOLname_extF <- c("fieldNumber", "scientificName",
                      "eventDate", "locality", "decimalLatitude", "decimalLongitude",
@@ -54,18 +54,18 @@ newCOLname_extF <- c("ID.field", "species",
                      "rightsholder_field", "responsible_field", "protocol_field",
                      "matrix", "unit", "EOM.%",
                      "group", "compound", "concentration")
-RisTri_long_extF <- RisTri %>% select(8, 13,
+QUERY_long_extFL <- QUERY %>% select(8, 13,
                                       6, 10, 4, 5, 
                                       15, 18, 17, 27,
                                       12, 21, 16,
                                       19, 46, 54,
                                       56, 45, 47) %>% rename_with(~ newCOLname_extF, all_of(oldCOLname_extF))
 
-write.xlsx(RisTri_long_extF, file = "RisTri - All data - extended field.xlsx")
+write.xlsx(QUERY_long_extFL, file = "Black-legged kittiwake - All data - extended field.xlsx")
 
 # Extended lab format -----------------------------------------------------
-RisTri <- fieldLab_df[fieldLab_df$scientificName == "Rissa tridactyla",]
-RisTri <- RisTri[complete.cases(RisTri[ , "eventID"]), ]
+QUERY <- fieldLab_df[fieldLab_df$scientificName == "Uria lomvia",]
+QUERY <- QUERY[complete.cases(QUERY[ , "eventID"]), ]
 
 oldCOLname_extL <- c("fieldNumber", "scientificName",
                      "eventDate", "locality",
@@ -79,19 +79,19 @@ newCOLname_extL <- c("ID.field", "species",
                      "group", "compound", "concentration",
                      "rightsholder_lab", "lab", "responsible_lab", "date_lab",
                      "LOD", "LOQ", "recovery")
-RisTri_long_extL <- RisTri %>% select(8, 13,
+QUERY_long_extFL <- QUERY %>% select(8, 13,
                                       6, 10,
                                       19, 46, 54,
                                       56, 45, 47,
                                       49, 41, 58, 42,
                                       53, 61, 60) %>% rename_with(~ newCOLname_extL, all_of(oldCOLname_extL))
 
-write.xlsx(RisTri_long_extL, file = "RisTri - All data - extended lab.xlsx")
+write.xlsx(QUERY_long_extFL, file = "Black-legged kittiwake - All data - extended lab.xlsx")
 
 
 # Extended field and lab format -------------------------------------------
-RisTri <- fieldLab_df[fieldLab_df$scientificName == "Rissa tridactyla",]
-RisTri <- RisTri[complete.cases(RisTri[ , "eventID"]), ]
+QUERY <- fieldLab_df[fieldLab_df$scientificName == "Uria lomvia",]
+QUERY <- QUERY[complete.cases(QUERY[ , "eventID"]), ]
 
 oldCOLname_extFL <- c("fieldNumber", "scientificName",
                       "eventDate", "locality", "decimalLatitude", "decimalLongitude",
@@ -109,7 +109,7 @@ newCOLname_extFL <- c("ID.field", "species",
                       "group", "compound", "concentration",
                       "rightsholder_lab", "lab", "responsible_lab", "date_lab",
                       "LOD", "LOQ", "recovery")
-RisTri_long_extFL <- RisTri %>% select(8, 13,
+QUERY_long_extFL <- QUERY %>% select(8, 13,
                                        6, 10, 4, 5, 
                                        15, 18, 17, 27,
                                        12, 21, 16,
@@ -118,4 +118,4 @@ RisTri_long_extFL <- RisTri %>% select(8, 13,
                                        49, 41, 58, 42,
                                        53, 61, 60) %>% rename_with(~ newCOLname_extFL, all_of(oldCOLname_extFL))
 
-write.xlsx(RisTri_long_extFL, file = "RisTri - All data - extended field and lab.xlsx")
+write.xlsx(QUERY_long_extFL, file = "Black-legged kittiwake - All data - extended field and lab.xlsx")
