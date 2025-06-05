@@ -117,3 +117,6 @@ MOSJ_long_extFL <- MOSJ %>% select(8, 13,
                                   53, 61, 60) %>% rename_with(~ newCOLname_extFL, all_of(oldCOLname_extFL))
 
 write.xlsx(MOSJ_long_extFL, file = "MOSJ - glaucous gull - extended field and lab.xlsx")
+
+length(MOSJ_long_extFL$ID.field)
+
